@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jogo de Damas Online - Jogue Agora!</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="favicon.svg" type="image/svg+xml">
+</head>
+<body>
+    <header>
+        <h1>🏁 Jogo de Damas Online</h1>
+        <nav>
+            <ul>
+                <li><a href="#jogo">Jogar</a></li>
+                <li><a href="#regras">Como Jogar</a></li>
+                <li><a href="#sobre">Sobre o Projeto</a></li>
+                <li><a href="#objetivos">Objetivos</a></li>
+                <li><a href="#disciplina">Disciplina</a></li>
+                <li><a href="#links">Links do Projeto</a></li>
+                <li><a href="DOM.html">Árvore DOM</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <!-- Barra Lateral com Informações do Projeto -->
+        <aside class="project-sidebar">
+            <h2>Informações do Projeto</h2>
+            
+            <section class="integrantes">
+                <h3>Integrantes</h3>
+                <ul>
+                    <li>Marcelo Dutra Mendonça (17203357)</li>
+                    <li>Jan Bortolanza (20203632)</li>
+                </ul>
+            </section>
+
+            <section class="curso">
+                <h3>Curso</h3>
+                <p><a href="https://presencial.moodle.ufsc.br/" target="_blank">INE5646-Programacao-para-Web - UFSC</a></p>
+            </section>
+
+            <section class="descricao">
+                <h3>Descrição do Projeto</h3>
+                <p>Desenvolvimento de um jogo de damas interativo utilizando tecnologias web modernas como HTML5, CSS3 e JavaScript.</p>
+            </section>
+
+            <section class="recursos">
+                <h3>Recursos Utilizados</h3>
+                <ul>
+                    <li>HTML5</li>
+                    <li>CSS3</li>
+                    <li>JavaScript</li>
+                    <li>Design Responsivo</li>
+                    <li>Manipulação DOM</li>
+                </ul>
+            </section>
+
+            <section class="repositorio">
+                <h3>Repositório</h3>
+                <p><a href="https://github.com/MarkiCast/INE5646-Programacao-para-Web" target="_blank">GitHub do Projeto</a></p>
+            </section>
+        </aside>
+
+        <div class="content">
+            <!-- Seção: Jogo de Damas (primeira coisa visível) -->
+            <section id="jogo" class="game-section">
+            <div class="game-container">
+                <div class="game-info">
+                    <h2>Jogue Damas Online</h2>
+                    <div class="game-status">
+                        <div class="player-turn">
+                            <span class="current-player">Vez do Jogador:</span>
+                            <span class="player-indicator player-red">Vermelho</span>
+                        </div>
+                        <div class="game-controls">
+                            <button class="btn-primary" onclick="novoJogo()">Novo Jogo</button>
+                            <button class="btn-secondary" onclick="reiniciarJogo()">Reiniciar</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="board-container">
+                    <div id="tabuleiro" class="board">
+                        <!-- Tabuleiro 8x8 será gerado aqui -->
+                    </div>
+                </div>
+                
+                <div class="game-sidebar">
+                    <div class="score-board">
+                        <h3>Placar</h3>
+                        <div class="score">
+                            <div class="player-score">
+                                <span class="player-red-piece"></span>
+                                <span>Vermelho: <span id="score-red">12</span></span>
+                            </div>
+                            <div class="player-score">
+                                <span class="player-black-piece"></span>
+                                <span>Preto: <span id="score-black">12</span></span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="captured-pieces">
+                        <h4>Peças Capturadas</h4>
+                        <div class="captured-red" id="captured-red"></div>
+                        <div class="captured-black" id="captured-black"></div>
+                    </div>
+                    
+                    <div class="game-tips">
+                        <h4>Dicas Rápidas</h4>
+                        <ul>
+                            <li>Mova na diagonal</li>
+                            <li>Capture é obrigatória</li>
+                            <li>Chegue ao fim para virar dama</li>
+                            <li>Dama move em qualquer direção</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Seção: Como Jogar -->
+        <section id="regras" class="rules-section">
+            <div class="content">
+                <h2>Como Jogar Damas</h2>
+                
+                <div class="rules-grid">
+                    <div class="rule-card">
+                        <h3>🎯 Objetivo</h3>
+                        <p>Capture todas as peças do adversário ou bloqueie todos os seus movimentos possíveis.</p>
+                    </div>
+                    
+                    <div class="rule-card">
+                        <h3>🚀 Movimento Básico</h3>
+                        <p>As peças movem-se apenas na diagonal, uma casa por vez, sempre para frente.</p>
+                    </div>
+                    
+                    <div class="rule-card">
+                        <h3>⚡ Captura</h3>
+                        <p>Salte sobre a peça adversária na diagonal. A captura é obrigatória quando possível.</p>
+                    </div>
+                    
+                    <div class="rule-card">
+                        <h3>👑 Dama</h3>
+                        <p>Quando uma peça chega ao final do tabuleiro, vira dama e pode mover em qualquer direção diagonal.</p>
+                    </div>
+                    
+                    <div class="rule-card">
+                        <h3>🏆 Vitória</h3>
+                        <p>Vence quem capturar todas as peças adversárias ou bloquear todos os movimentos.</p>
+                    </div>
+                    
+                    <div class="rule-card">
+                        <h3>📋 Regras Especiais</h3>
+                        <p>Capturas múltiplas são possíveis. A peça deve continuar capturando se houver oportunidade.</p>
+                    </div>
+                </div>
+                
+                <div class="strategy-tips">
+                    <h3>Estratégias Básicas</h3>
+                    <div class="tips-grid">
+                        <div class="tip">
+                            <strong>Controle o Centro:</strong> Peças no centro têm mais opções de movimento.
+                        </div>
+                        <div class="tip">
+                            <strong>Proteja suas Peças:</strong> Mantenha peças próximas para proteção mútua.
+                        </div>
+                        <div class="tip">
+                            <strong>Force Capturas:</strong> Obrigue o adversário a fazer capturas desfavoráveis.
+                        </div>
+                        <div class="tip">
+                            <strong>Promova Damas:</strong> Leve suas peças ao final do tabuleiro para criar damas.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+
+         <!-- Seção: Sobre o Projeto -->
+         <section id="sobre" class="project-section">
+             <div class="content">
+                 <h2>Sobre o Projeto</h2>
+                 <p>Este projeto consiste no desenvolvimento de um jogo de damas completo utilizando tecnologias web. O objetivo é criar uma experiência interativa e educativa que demonstre o uso prático de HTML, CSS e JavaScript na construção de aplicações web dinâmicas.</p>
+                 <p>O jogo de damas é um clássico jogo de estratégia que será implementado com todas as regras tradicionais, incluindo movimentos básicos, capturas obrigatórias e promoção de peças a dama.</p>
+             </div>
+         </section>
+
+         <!-- Seção: Objetivos -->
+         <section id="objetivos" class="objectives-section">
+             <div class="content">
+                 <h2>Objetivos</h2>
+                 <ul>
+                     <li>Desenvolver um jogo de damas funcional e interativo</li>
+                     <li>Aplicar conceitos de programação web moderna</li>
+                     <li>Implementar design responsivo e acessível</li>
+                     <li>Utilizar manipulação DOM para interatividade</li>
+                     <li>Criar uma interface intuitiva e atrativa</li>
+                     <li>Demonstrar boas práticas de desenvolvimento web</li>
+                 </ul>
+             </div>
+         </section>
+
+         <!-- Seção: Disciplina -->
+         <section id="disciplina" class="discipline-section">
+             <div class="content">
+                 <h2>Disciplina Relacionada</h2>
+                 <p><strong>INE5646-Programacao-para-Web</strong> - Universidade Federal de Santa Catarina (UFSC)</p>
+                 <p>Esta disciplina aborda os fundamentos e técnicas avançadas de desenvolvimento web, incluindo:</p>
+                 <ul>
+                     <li>Estruturação de documentos HTML</li>
+                     <li>Estilização com CSS</li>
+                     <li>Programação client-side com JavaScript</li>
+                     <li>Manipulação do DOM</li>
+                     <li>Design responsivo</li>
+                     <li>Boas práticas de desenvolvimento</li>
+                 </ul>
+             </div>
+         </section>
+
+         <!-- Seção: Links do Projeto -->
+         <section id="links" class="links-section">
+             <div class="content">
+                 <h2>Links do Projeto</h2>
+                 <div class="links-container">
+                     <div class="link-item">
+                         <h3>Repositório Principal</h3>
+                         <p><a href="https://github.com/MarkiCast/INE5646-Programacao-para-Web" target="_blank">GitHub - Jogo de Damas</a></p>
+                     </div>
+                     <div class="link-item">
+                         <h3>Árvore DOM</h3>
+                         <p><a href="DOM.html">Estrutura DOM do Projeto</a></p>
+                     </div>
+                     <div class="link-item">
+                         <h3>Plataforma da Disciplina</h3>
+                         <p><a href="https://presencial.moodle.ufsc.br/" target="_blank">Moodle UFSC</a></p>
+                     </div>
+                 </div>
+             </div>
+         </section>
+        </div>
+     </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>Jogo de Damas Online</h3>
+                <p>Uma implementação web moderna do clássico jogo de estratégia.</p>
+            </div>
+            
+            <div class="footer-section">
+                <h3>Contato</h3>
+                <address>
+                    <p>Email: <a href="mailto:marcelodutram@hotmail.com">marcelodutram@hotmail.com</a></p>
+                    <p>Telefone: (48) 99905-5466</p>
+                    <p>Universidade Federal de Santa Catarina - UFSC</p>
+                </address>
+            </div>
+            
+            <div class="footer-section">
+                <h3>Links Úteis</h3>
+                <ul>
+                    <li><a href="https://www.ufsc.br/" target="_blank">UFSC</a></li>
+                    <li><a href="https://developer.mozilla.org/" target="_blank">MDN Web Docs</a></li>
+                    <li><a href="DOM.html">Árvore DOM</a></li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+            <p>&copy; 2025 Jogo de Damas Online - Projeto de Programação Web UFSC</p>
+        </div>
+    </footer>
+
+    <script>
+        // Inicialização básica do jogo
+        let currentPlayer = 'red';
+        let gameBoard = [];
+        let selectedPiece = null;
+        
+        // Função para criar o tabuleiro
+        function criarTabuleiro() {
+            const board = document.getElementById('tabuleiro');
+            board.innerHTML = '';
+            
+            for (let row = 0; row < 8; row++) {
+                for (let col = 0; col < 8; col++) {
+                    const square = document.createElement('div');
+                    square.className = 'square';
+                    square.dataset.row = row;
+                    square.dataset.col = col;
+                    
+                    // Alternar cores das casas
+                    if ((row + col) % 2 === 0) {
+                        square.classList.add('light');
+                    } else {
+                        square.classList.add('dark');
+                        
+                        // Adicionar peças iniciais
+                        if (row < 3) {
+                            const piece = document.createElement('div');
+                            piece.className = 'piece red';
+                            piece.onclick = () => selecionarPeca(piece, row, col);
+                            square.appendChild(piece);
+                        } else if (row > 4) {
+                            const piece = document.createElement('div');
+                            piece.className = 'piece black';
+                            piece.onclick = () => selecionarPeca(piece, row, col);
+                            square.appendChild(piece);
+                        }
+                    }
+                    
+                    square.onclick = () => moverPeca(row, col);
+                    board.appendChild(square);
+                }
+            }
+        }
+        
+        // Função para selecionar uma peça
+        function selecionarPeca(piece, row, col) {
+            // Remover seleção anterior
+            document.querySelectorAll('.piece.selected').forEach(p => p.classList.remove('selected'));
+            
+            // Verificar se é a vez do jogador correto
+            if ((currentPlayer === 'red' && piece.classList.contains('red')) ||
+                (currentPlayer === 'black' && piece.classList.contains('black'))) {
+                piece.classList.add('selected');
+                selectedPiece = { piece, row, col };
+            }
+        }
+        
+        // Função para mover uma peça (implementação básica)
+        function moverPeca(targetRow, targetCol) {
+            if (!selectedPiece) return;
+            
+            const targetSquare = document.querySelector(`[data-row="${targetRow}"][data-col="${targetCol}"]`);
+            
+            // Verificar se a casa está vazia e é uma casa escura
+            if (targetSquare.classList.contains('dark') && !targetSquare.querySelector('.piece')) {
+                // Mover a peça
+                targetSquare.appendChild(selectedPiece.piece);
+                selectedPiece.piece.classList.remove('selected');
+                
+                // Alternar jogador
+                currentPlayer = currentPlayer === 'red' ? 'black' : 'red';
+                atualizarInterface();
+                
+                selectedPiece = null;
+            }
+        }
+        
+        // Função para atualizar a interface
+        function atualizarInterface() {
+            const playerIndicator = document.querySelector('.player-indicator');
+            playerIndicator.textContent = currentPlayer === 'red' ? 'Vermelho' : 'Preto';
+            playerIndicator.className = `player-indicator player-${currentPlayer}`;
+        }
+        
+        // Função para novo jogo
+        function novoJogo() {
+            currentPlayer = 'red';
+            selectedPiece = null;
+            criarTabuleiro();
+            atualizarInterface();
+            document.getElementById('score-red').textContent = '12';
+            document.getElementById('score-black').textContent = '12';
+        }
+        
+        // Função para reiniciar jogo
+        function reiniciarJogo() {
+            novoJogo();
+        }
+        
+        // Inicializar o jogo quando a página carregar
+        document.addEventListener('DOMContentLoaded', function() {
+            criarTabuleiro();
+            atualizarInterface();
+        });
+    </script>
+</body>
+</html>

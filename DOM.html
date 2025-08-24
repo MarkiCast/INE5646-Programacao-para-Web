@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Árvore DOM - Jogo de Damas</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="favicon.svg" type="image/svg+xml">
+    <style>
+        .dom-tree {
+            font-family: 'Courier New', monospace;
+            background: #f8f9fa;
+            padding: 2rem;
+            border-radius: 10px;
+            border: 2px solid var(--border-color);
+            margin: 2rem 0;
+            overflow-x: auto;
+        }
+        
+        .dom-node {
+            margin: 0.2rem 0;
+            padding: 0.1rem 0;
+        }
+        
+        .dom-element {
+            color: #d73a49;
+            font-weight: bold;
+        }
+        
+        .dom-attribute {
+            color: #6f42c1;
+        }
+        
+        .dom-text {
+            color: #28a745;
+            font-style: italic;
+        }
+        
+        .dom-comment {
+            color: #6a737d;
+            font-style: italic;
+        }
+        
+        .indent-1 { margin-left: 2rem; }
+        .indent-2 { margin-left: 4rem; }
+        .indent-3 { margin-left: 6rem; }
+        .indent-4 { margin-left: 8rem; }
+        .indent-5 { margin-left: 10rem; }
+        .indent-6 { margin-left: 12rem; }
+        .indent-7 { margin-left: 14rem; }
+        .indent-8 { margin-left: 16rem; }
+        
+        .back-link {
+            display: inline-block;
+            margin: 2rem 0;
+            padding: 1rem 2rem;
+            background: var(--primary-color);
+            color: white;
+            text-decoration: none;
+            border-radius: 25px;
+            transition: all 0.3s ease;
+        }
+        
+        .back-link:hover {
+            background: var(--hover-color);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        }
+        
+        .dom-explanation {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            margin: 2rem 0;
+            border-left: 4px solid var(--accent-color);
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Representação da Árvore DOM</h1>
+        <nav>
+            <ul>
+                <li><a href="index.html">← Voltar para a Página Principal</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main style="grid-template-columns: 1fr; max-width: 1000px;">
+        <div class="content">
+            <section>
+                <h2>O que é o DOM?</h2>
+                <div class="dom-explanation">
+                    <p><strong>DOM (Document Object Model)</strong> é uma representação estrutural do documento HTML como uma árvore de objetos. Cada elemento HTML se torna um nó na árvore, permitindo que linguagens de programação como JavaScript manipulem o conteúdo, estrutura e estilo da página.</p>
+                    
+                    <h3>Características do DOM:</h3>
+                    <ul>
+                        <li><strong>Estrutura hierárquica:</strong> Os elementos são organizados em uma árvore de pais e filhos</li>
+                        <li><strong>Nós:</strong> Cada elemento, atributo e texto é um nó na árvore</li>
+                        <li><strong>Manipulação dinâmica:</strong> Permite adicionar, remover e modificar elementos</li>
+                        <li><strong>Interface de programação:</strong> Fornece métodos para acessar e modificar elementos</li>
+                    </ul>
+                </div>
+            </section>
+
+            <section>
+                <h2>Árvore DOM da Página Principal (index.html)</h2>
+                <div class="dom-tree">
+                    <div class="dom-node">
+                        <span class="dom-comment">&lt;!-- Declaração do tipo de documento --&gt;</span>
+                    </div>
+                    <div class="dom-node">
+                        <span class="dom-element">&lt;!DOCTYPE html&gt;</span>
+                    </div>
+                    
+                    <div class="dom-node">
+                        <span class="dom-element">&lt;html</span> <span class="dom-attribute">lang="pt-br"</span><span class="dom-element">&gt;</span>
+                    </div>
+                    
+                    <div class="dom-node indent-1">
+                        <span class="dom-element">&lt;head&gt;</span>
+                    </div>
+                    
+                    <div class="dom-node indent-2">
+                        <span class="dom-element">&lt;meta</span> <span class="dom-attribute">charset="UTF-8"</span><span class="dom-element">&gt;</span>
+                    </div>
+                    
+                    <div class="dom-node indent-2">
+                        <span class="dom-element">&lt;meta</span> <span class="dom-attribute">name="viewport" content="width=device-width, initial-scale=1.0"</span><span class="dom-element">&gt;</span>
+                    </div>
+                    
+                    <div class="dom-node indent-2">
+                        <span class="dom-element">&lt;title&gt;</span>
+                        <span class="dom-text">Jogo de Damas - Projeto Web</span>
+                        <span class="dom-element">&lt;/title&gt;</span>
+                    </div>
+                    
+                    <div class="dom-node indent-2">
+                        <span class="dom-element">&lt;link</span> <span class="dom-attribute">rel="stylesheet" href="style.css"</span><span class="dom-element">&gt;</span>
+                    </div>
+                    
+                    <div class="dom-node indent-2">
+                        <span class="dom-element">&lt;link</span> <span class="dom-attribute">rel="icon" href="favicon.ico" type="image/x-icon"</span><span class="dom-element">&gt;</span>
+                    </div>
+                    
+                    <div class="dom-node indent-1">
+                        <span class="dom-element">&lt;/head&gt;</span>
+                    </div>
+                    
+                    <div class="dom-node indent-1">
+                        <span class="dom-element">&lt;body&gt;</span>
+                    </div>
+                    
+                    <div class="dom-node indent-2">
+                        <span class="dom-element">&lt;header&gt;</span>
+                    </div>
+                    
+                    <div class="dom-node indent-3">
+                        <span class="dom-element">&lt;h1&gt;</span>
+                        <span class="dom-text">Jogo de Damas</span>
+                        <span class="dom-element">&lt;/h1&gt;</span>
+                    </div>
+                    
+                    <div class="dom-node indent-3">
+                        <span class="dom-element">&lt;nav&gt;</span>
+                    </div>
+                    
+                    <div class="dom-node indent-4">
+                        <span class="dom-element">&lt;ul&gt;</span>
+                    </div>
+                    
+                    <div class="dom-node indent-5">
+                        <span class="dom-element">&lt;li&gt;</span>
+                        <span class="dom-element">&lt;a</span> <span class="dom-attribute">href="#sobre"</span><span class="dom-element">&gt;</span>
+                        <span class="dom-text">Sobre o Projeto</span>
+                        <span class="dom-element">&lt;/a&gt;</span>
+                        <span class="dom-element">&lt;/li&gt;</span>
+                    </div>
+                    
+                    <div class="dom-node indent-5">
+                        <span class="dom-element">&lt;li&gt;</span>
+                        <span class="dom-element">&lt;a</span> <span class="dom-attribute">href="#objetivos"</span><span class="dom-element">&gt;</span>
+                        <span class="dom-text">Objetivos</span>
+                        <span class="dom-element">&lt;/a&gt;</span>
+                        <span class="dom-element">&lt;/li&gt;</span>
+                    </div>
+                    
+                    <div class="dom-node indent-5">
+                        <span class="dom-element">&lt;li&gt;</span>
+                        <span class="dom-element">&lt;a</span> <span class="dom-attribute">href="#disciplina"</span><span class="dom-element">&gt;</span>
+                        <span class="dom-text">Disciplina</span>
+                        <span class="dom-element">&lt;/a&gt;</span>
+                        <span class="dom-element">&lt;/li&gt;</span>
+                    </div>
+                    
+                    <div class="dom-node indent-5">
+                        <span class="dom-element">&lt;li&gt;</span>
+                        <span class="dom-element">&lt;a</span> <span class="dom-attribute">href="#links"</span><span class="dom-element">&gt;</span>
+                        <span class="dom-text">Links do Projeto</span>
+                        <span class="dom-element">&lt;/a&gt;</span>
+                        <span class="dom-element">&lt;/li&gt;</span>
+                    </div>
+                    
+                    <div class="dom-node indent-5">
+                        <span class="dom-element">&lt;li&gt;</span>
+                        <span class="dom-element">&lt;a</span> <span class="dom-attribute">href="DOM.html"</span><span class="dom-element">&gt;</span>
+                        <span class="dom-text">Árvore DOM</span>
+                        <span class="dom-element">&lt;/a&gt;</span>
+                        <span class="dom-element">&lt;/li&gt;</span>
+                    </div>
+                    
+                    <div class="dom-node indent-4">
+                        <span class="dom-element">&lt;/ul&gt;</span>
+                    </div>
+                    
+                    <div class="dom-node indent-3">
+                        <span class="dom-element">&lt;/nav&gt;</span>
+                    </div>
+                    
+                    <div class="dom-node indent-2">
+                        <span class="dom-element">&lt;/header&gt;</span>
+                    </div>
+                    
+                    <div class="dom-node indent-2">
+                        <span class="dom-element">&lt;main&gt;</span>
+                    </div>
+                    
+                    <div class="dom-node indent-3">
+                        <span class="dom-element">&lt;aside&gt;</span>
+                    </div>
+                    
+                    <div class="dom-node indent-4">
+                        <span class="dom-element">&lt;h2&gt;</span>
+                        <span class="dom-text">Informações do Projeto</span>
+                        <span class="dom-element">&lt;/h2&gt;</span>
+                    </div>
+                    
+                    <div class="dom-node indent-4">
+                        <span class="dom-element">&lt;section</span> <span class="dom-attribute">class="integrantes"</span><span class="dom-element">&gt;</span>
+                    </div>
+                    
+                    <div class="dom-node indent-5">
+                        <span class="dom-element">&lt;h3&gt;</span>
+                        <span class="dom-text">Integrantes</span>
+                        <span class="dom-element">&lt;/h3&gt;</span>
+                    </div>
+                    
+                    <div class="dom-node indent-5">
+                        <span class="dom-element">&lt;ul&gt;</span>
+                        <span class="dom-comment">/* Lista de integrantes */</span>
+                        <span class="dom-element">&lt;/ul&gt;</span>
+                    </div>
+                    
+                    <div class="dom-node indent-4">
+                        <span class="dom-element">&lt;/section&gt;</span>
+                    </div>
+                    
+                    <div class="dom-node indent-4">
+                        <span class="dom-comment">/* Outras seções do aside: curso, descrição, recursos, repositório */</span>
+                    </div>
+                    
+                    <div class="dom-node indent-3">
+                        <span class="dom-element">&lt;/aside&gt;</span>
+                    </div>
+                    
+                    <div class="dom-node indent-3">
+                        <span class="dom-element">&lt;div</span> <span class="dom-attribute">class="content"</span><span class="dom-element">&gt;</span>
+                    </div>
+                    
+                    <div class="dom-node indent-4">
+                        <span class="dom-element">&lt;section</span> <span class="dom-attribute">id="sobre"</span><span class="dom-element">&gt;</span>
+                    </div>
+                    
+                    <div class="dom-node indent-5">
+                        <span class="dom-element">&lt;h2&gt;</span>
+                        <span class="dom-text">Sobre o Projeto</span>
+                        <span class="dom-element">&lt;/h2&gt;</span>
+                    </div>
+                    
+                    <div class="dom-node indent-5">
+                        <span class="dom-element">&lt;p&gt;</span>
+                        <span class="dom-text">Este projeto consiste no desenvolvimento...</span>
+                        <span class="dom-element">&lt;/p&gt;</span>
+                    </div>
+                    
+                    <div class="dom-node indent-4">
+                        <span class="dom-element">&lt;/section&gt;</span>
+                    </div>
+                    
+                    <div class="dom-node indent-4">
+                        <span class="dom-comment">/* Outras seções: objetivos, disciplina, links */</span>
+                    </div>
+                    
+                    <div class="dom-node indent-3">
+                        <span class="dom-element">&lt;/div&gt;</span>
+                    </div>
+                    
+                    <div class="dom-node indent-2">
+                        <span class="dom-element">&lt;/main&gt;</span>
+                    </div>
+                    
+                    <div class="dom-node indent-2">
+                        <span class="dom-element">&lt;footer&gt;</span>
+                    </div>
+                    
+                    <div class="dom-node indent-3">
+                        <span class="dom-element">&lt;address&gt;</span>
+                        <span class="dom-comment">/* Informações de contato */</span>
+                        <span class="dom-element">&lt;/address&gt;</span>
+                    </div>
+                    
+                    <div class="dom-node indent-3">
+                        <span class="dom-element">&lt;div</span> <span class="dom-attribute">class="links-uteis"</span><span class="dom-element">&gt;</span>
+                        <span class="dom-comment">/* Links úteis */</span>
+                        <span class="dom-element">&lt;/div&gt;</span>
+                    </div>
+                    
+                    <div class="dom-node indent-3">
+                        <span class="dom-element">&lt;p</span> <span class="dom-attribute">class="copyright"</span><span class="dom-element">&gt;</span>
+                        <span class="dom-text">© 2024 Projeto Jogo de Damas...</span>
+                        <span class="dom-element">&lt;/p&gt;</span>
+                    </div>
+                    
+                    <div class="dom-node indent-2">
+                        <span class="dom-element">&lt;/footer&gt;</span>
+                    </div>
+                    
+                    <div class="dom-node indent-1">
+                        <span class="dom-element">&lt;/body&gt;</span>
+                    </div>
+                    
+                    <div class="dom-node">
+                        <span class="dom-element">&lt;/html&gt;</span>
+                    </div>
+                </div>
+            </section>
+
+            <section>
+                <h2>Análise da Estrutura</h2>
+                <div class="dom-explanation">
+                    <h3>Elementos Principais:</h3>
+                    <ul>
+                        <li><strong>&lt;html&gt;:</strong> Elemento raiz do documento</li>
+                        <li><strong>&lt;head&gt;:</strong> Contém metadados, título e links para recursos externos</li>
+                        <li><strong>&lt;body&gt;:</strong> Contém todo o conteúdo visível da página</li>
+                        <li><strong>&lt;header&gt;:</strong> Cabeçalho com título e navegação</li>
+                        <li><strong>&lt;main&gt;:</strong> Conteúdo principal da página</li>
+                        <li><strong>&lt;aside&gt;:</strong> Barra lateral com informações complementares</li>
+                        <li><strong>&lt;footer&gt;:</strong> Rodapé com informações de contato e links</li>
+                    </ul>
+                    
+                    <h3>Elementos Semânticos Utilizados:</h3>
+                    <ul>
+                        <li><strong>&lt;nav&gt;:</strong> Navegação principal</li>
+                        <li><strong>&lt;section&gt;:</strong> Seções temáticas do conteúdo</li>
+                        <li><strong>&lt;address&gt;:</strong> Informações de contato</li>
+                        <li><strong>&lt;article&gt;:</strong> Conteúdo independente (implícito nas seções)</li>
+                    </ul>
+                    
+                    <h3>Atributos Importantes:</h3>
+                    <ul>
+                        <li><strong>id:</strong> Identificadores únicos para navegação interna</li>
+                        <li><strong>class:</strong> Classes CSS para estilização</li>
+                        <li><strong>href:</strong> Links de navegação</li>
+                        <li><strong>lang:</strong> Idioma do documento</li>
+                    </ul>
+                </div>
+            </section>
+
+            <a href="index.html" class="back-link">← Voltar para a Página Principal</a>
+        </div>
+    </main>
+
+    <footer>
+        <div>
+            <h3>Sobre esta Página</h3>
+            <p>Esta página demonstra a estrutura DOM da página principal do projeto, mostrando como os elementos HTML são organizados hierarquicamente.</p>
+        </div>
+        
+        <div>
+            <h3>Links Úteis</h3>
+            <ul>
+                <li><a href="https://developer.mozilla.org/docs/Web/API/Document_Object_Model" target="_blank">MDN - DOM</a></li>
+                <li><a href="https://www.w3schools.com/js/js_htmldom.asp" target="_blank">W3Schools - HTML DOM</a></li>
+                <li><a href="index.html">Página Principal</a></li>
+            </ul>
+        </div>
+        
+        <p class="copyright">&copy; 2024 Projeto Jogo de Damas - Representação DOM</p>
+    </footer>
+</body>
+</html>
